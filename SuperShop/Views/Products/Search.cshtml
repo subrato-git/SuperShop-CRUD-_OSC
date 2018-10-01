@@ -1,0 +1,28 @@
+﻿@using SuperShop.Models
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Search By</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        
+       @Html.DropDownList("searchBy",
+                    new SelectList(Enum.GetValues(typeof(SearchBy))),
+                    "Default",
+                    new { @class = "form-control" })
+    </div><br />
+
+    <div>
+        <input type="text" name="ProductName" id="ProductId" value="" required />
+        <input type="submit" name="ProductName" id="ProductId" value="Search" />
+    </div><br />
+    <p>
+        @Html.ActionLink("Back", "Index")
+    </p>
+
+}

@@ -1,0 +1,48 @@
+﻿@model IEnumerable<SuperShop.Models.Products>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")  
+    &emsp;&emsp;&emsp;&emsp;
+    @Html.ActionLink("Search Product","Search")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Product Name    
+        </th>
+        <th>
+            Category
+        </th>
+        <th>
+            Quantity
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductCategory)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductQuantity)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ProductId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ProductId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ProductId })
+        </td>
+    </tr>
+}
+
+</table>

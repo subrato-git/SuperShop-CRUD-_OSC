@@ -1,0 +1,58 @@
+﻿@model IEnumerable<SuperShop.Models.Products>
+
+
+@{
+    ViewBag.Title = "SearchResult";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>SearchResult</h2>
+
+@using (Html.BeginForm())
+{
+    if (Model == null)
+    {
+        
+        <text>Can't Find this Product </text>
+        @Html.ActionLink("Return to Product List", "Index")
+
+    }
+    else
+    {
+        <table class="table">
+            <tr>
+                <th>
+                    Product Name
+                </th>
+                <th>
+                    Category
+                </th>
+                <th>
+                    Quantity
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductCategory)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductQuantity)
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+        <br />
+        @Html.ActionLink("Return to Products List","Index")
+
+    }
+
+}
